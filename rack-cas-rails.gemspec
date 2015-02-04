@@ -10,7 +10,6 @@ Gem::Specification.new do |spec|
   spec.files       = [
     "lib/rack-cas/rails/controllers.rb",
     "lib/rack-cas/rails/helpers.rb",
-    "lib/rack-cas/rails.rb",
     "LICENSE",
     "README.md"
     ]

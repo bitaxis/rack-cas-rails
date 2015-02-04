@@ -18,10 +18,11 @@ Then open up your config/application.rb file, and add the following:
 
 ## Requirements
 
-The rack-cas-rails gem relies on the following gems, along with whatever other gems these dependent ones need:
+The rack-cas-rails gem relies on the following:
 
-  * rack-cas
-  * rails
+  * A CAS-compliant server, such as [CASinoApp](http://rbcas.com)
+  * [rack-cas](https://github.com/biola/rack-cas)
+  * [rails](http://rubyonrails.org/)
 
 ## Basic Usage
 
@@ -38,9 +39,6 @@ module MyGreatApplication
 end
 ```
 
-*Theoretically, this should work with any CAS-compliant server implementations, but I've tested only against*
-[CASinoApp](http://rbcas.com)*.*
-
 In the simplest scenario, you'll want your entire application protected by authentication.  That is, unless a user has authenticated,
 he can do nothing.  To do so, add the following ```before_action``` callback to your ApplicationController (in file
 ```app/controllers/application_ronctoller.rb```):
@@ -56,7 +54,8 @@ end
 The ```authenticate!``` method will check to see if a browser session is authenticated.  If it is, controller execution will continue.
 Otherwise, it will render the ```public/401.html``` file as well as return a HTTP status of 401.
 
-So, now, create a ```pubilc/401.html``` in your application.   You can simply copy an existing file, rename and change its contents.
+So, now, create a ```pubilc/401.html``` file in your application.   You can simply copy an existing file, rename and change its
+contents.
 
 ## Helper Methods
 

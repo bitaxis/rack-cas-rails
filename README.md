@@ -26,7 +26,7 @@ The rack-cas-rails gem relies on the following:
 
 ## Basic Usage
 
-The first thing you need to do is to make your Application class (in file ```config/application.rb```) aware of the CAS-compliant
+The first thing you need to do is to make your Application class (file ```config/application.rb```) aware of the CAS-compliant
 server you are integrating with by pointing out its base URL, like so:
 
 ```ruby
@@ -40,7 +40,7 @@ end
 ```
 
 In the simplest scenario, you'll want your entire application protected by authentication.  That is, unless a user has authenticated,
-he can do nothing.  To do so, add the following ```before_action``` callback to your ApplicationController (in file
+he can do nothing.  To do so, add the following ```before_action``` callback to your ApplicationController (file
 ```app/controllers/application_ronctoller.rb```):
 
 ```ruby
@@ -92,6 +92,49 @@ class ApplicationController
 
 end
 ```
+
+Lastly, change your ```views/layouts/application.html.erb``` to be as follows:
+
+```erb
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Testapp420</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <divi id="nav-header">
+    <% if authenticated? %>
+      <span>Logged in as <%= current_user.username %>.</span>
+      <span style="float:right"><%= link_to "Logout", logout_url %></span>
+    <% else %>
+      <span><%= link_to "Login", login_url %></span>
+    <% end %>
+  </div>
+  <hr />
+  <div>
+    <%= yield %>
+  </div>
+</body>
+</html>
+```
+
+## Summary
+
+To recap, you'll have integrated your Rails application with a CAS-compliant server by making these changes to your application:
+
+  1. Add config.rack_cas.server_url to config/application.rb
+  2. Add ```before_action :authenticate!``` to ApplicationController
+  3. Add ```current_user``` method to ApplictionController
+  4. Add simple navigational header to make use of ```current_user``` and the ```login_url```/```logout_url``` helpers
+
+As such, you can expect the following behavior:
+
+  * When you browse to any view within your application using a fresh session, you'll be re-directed to the sign-in page
+  * After you authenticate, you'll be re-directed back to the page you browsed to
+  * When you click the Logout link, your session will end, and the browser will be re-directed back to the login page
 
 ## Credits
 

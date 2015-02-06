@@ -32,3 +32,5 @@ module ApplicationHelper
     url.query = "service=#{service_url || request.url}"
     url.to_s
   end
+
+end

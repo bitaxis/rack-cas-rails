@@ -1,5 +1,3 @@
-module RackCas
-  module Rails
-    VERSION = "0.0.1"
-  end
+module RackCASRails
+  VERSION = "0.0.1"
 end

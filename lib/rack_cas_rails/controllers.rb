@@ -1,6 +1,3 @@
-module RackCASRails
-end
-
 ##
 # Augment Rails' ApplicationController class with authentication related methods.
 

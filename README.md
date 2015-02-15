@@ -59,7 +59,7 @@ contents.
 
 ## Helper Methods
 
-The rack-cas-rails gem also augments the ApplicationHelper module with these methods:
+The rack-cas-rails gem also adds these helper methods:
 
   * login_url
   * logout_url

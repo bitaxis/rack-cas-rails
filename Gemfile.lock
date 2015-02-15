@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rack-cas-rails (0.0.2)
+    rack-cas-rails (0.0.3)
       rack-cas (~> 0.9.2)
       rails (~> 4.2, >= 4.2.0)
 

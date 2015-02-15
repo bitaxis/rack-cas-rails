@@ -7,7 +7,7 @@ class PeopleControllerTest < ActionController::TestCase
     @person = people(:one)
   end
 
-  test "should get index" do
+  test "should get success for index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:people)
@@ -16,10 +16,13 @@ class PeopleControllerTest < ActionController::TestCase
     end
   end
 
-  # test "should get new" do
-  #   get :new
-  #   assert_response :success
-  # end
+  test "should get unauthorized for new" do
+    # should get :unauthorized because of the before_action in PeopleController
+    # that says:
+    #   before_action :authenticate! except: [:index, :show]
+    get :new
+    assert_response :unauthorized
+  end
 
   # test "should create person" do
   #   assert_difference('Person.count') do
@@ -29,10 +32,10 @@ class PeopleControllerTest < ActionController::TestCase
   #   assert_redirected_to person_path(assigns(:person))
   # end
 
-  # test "should show person" do
-  #   get :show, id: @person
-  #   assert_response :success
-  # end
+  test "should get success for show" do
+    get :show, id: @person
+    assert_response :success
+  end
 
   # test "should get edit" do
   #   get :edit, id: @person

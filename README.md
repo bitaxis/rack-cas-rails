@@ -30,7 +30,8 @@ The rack-cas-rails gem relies on the following:
   * [rails](http://rubyonrails.org/)
 
 Having access to a working CAS-compliant server is a pre-requisite.  [CASinoApp](http://rbcas.com) is a simple one to set up and
-use, especially if you go with the ***directly on your server*** option.
+use, especially if you go with the ***directly on your server*** option.  Whiichever CAS server you go with, you'll need to
+know the password of at least one login for testing purposes.
 
 ### Disclaimer
 
@@ -40,7 +41,7 @@ only ever developed and tested against it.  If you are able to try it against ot
 ## Basic Usage
 
 Now that you have access to a functioning CAS-compliant server, the next thing you need to do is to make your ```Rails::Application```
-subclass aware of the CAS-compliant server you are integrating with by pointing out its base URL, as shown here.
+subclass aware of the server you are integrating with by pointing out its base URL, as shown here.
 
 Note that setting the ```@cas_server_url``` variable is important as the ```login_url``` helper will make use of it.
 
@@ -76,8 +77,8 @@ end
 The ```authenticate!``` helper will check to see if a browser session is authenticated.  If it is, controller execution will continue.
 Otherwise, it will render the ```public/401.html``` file if one exists, as well as return a HTTP status of 401.
 
-At this point, if you fire up your application and use a browser to access any view of any controller subclassed from
-ApplicationController, the browser will get re-directed to the CAS server's log-in page.
+At this point, if you fire up your application and browse to access any view of any controller subclassed from
+```ApplicationController```, the browser will get re-directed to the CAS server's log-in page.
 
 ## Helper Methods
 
@@ -85,15 +86,12 @@ The rack-cas-rails gem also adds some helper methods:
 
 * authenticate!
 * authenticated?
-
 * login_url
 * logout_url
 
-You have already seen ```authenticate!``` at work.  The ```authenticated?``` helper allows your application to determin whether
-a browser is authenticated or not and take appropriate action.
-
-When invoked, the latter two helpers will return the CAS-integrated login and log out URLs, respectively.  They, in turn, enable
-you to implement *partial authentication*.
+You have already seen ```authenticate!``` at work.  The ```authenticated?``` helper allows your application to determine whether
+a browser is authenticated or not and take appropriate action.  When invoked, the latter two helpers will return the
+CAS-integrated login and log out URLs, respectively.  They, in turn, enable you to implement *partial authentication*.
 
 ## Partial Authentication
 
@@ -166,12 +164,12 @@ server will take care of it for you.
 The second point, however,requires some explanation and experimentation...
 
 Once a user has authenticated, the [rack-cas](https://github.com/biola/rack-cas) gem will insert some information about
-that user into your application's session that it can then retrieve.  Your application should then take this information, usually
+that user into your application's session for it to retrieve.  Your application should then take this information, usually
 in the form of a username, and look up information about that user.  Based on the information available, your application can
 then implement additional features such as authorziation (not covered here).
 
 Ideally, your application should use the same data repository as your CAS server to look up user information.  That repository can
-be a SQL database table, some LDAP construct, or any number of things.  But for now, we can fake it.
+be a SQL database table, some LDAP server, or any number of things.  But for now, we can fake it.
 
 Go ahead and create a scaffold around a Person model (or any other name you'd like to use), like so:
 
@@ -248,18 +246,18 @@ Next, change your layout to be as follows:
 
 Restart your application again, and visit an ```/index``` endpoint.  Click the __Login__ link, and authenticate using "jsmith"
 (or whichever user you chose) and the correct password.  Once authenticated, you'll be re-directed back to the original page.
-Now visit a ```/new``` endpoint, and you won't be prompted to authenticate again, until you click the __Logout__ link or
-restart your browser.
+This time, you are shown whom you are logged in as.  Now visit a ```/new``` endpoint, and you won't be prompted to authenticate
+again, until you click the __Logout__ link or restart your browser.
 
 ## Summary
 
-With ```rack-cas-rails```, you can integrate your Rails application with CASinoApp or another CAS-compliant server for
-authentication by making changes in:
+With rack-cas-rails, you can integrate your Rails application with CASinoApp or another CAS-compliant server for
+authentication by making these changes in it:
 
 1. Your Rails::Application subclass (in config/application.rb)
 2. Your ApplicationController class (in app/controllers/application_controller.rb)
 3. Your layout template (in app/views/layouts/application.html.erb)
-4. A model (or some other means) by which you can retrieve information about the currently logged in user
+4. Add a model (or some other means) by which you can retrieve information about the currently logged in user
 
 With these changes in place, you can expect your application to exhibit the following behavior:
 

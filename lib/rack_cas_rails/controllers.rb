@@ -1,3 +1,6 @@
+module RackCASRails
+end
+
 ##
 # Augment Rails' ApplicationController class with authentication related methods.
 
@@ -7,7 +10,12 @@ class ApplicationController < ActionController::Base
   # When invoked, will force authenticate.  Most likely to be invoked as a before_action.
 
   def authenticate!
-    authenticated? or render(:file => "public/401.html", :status => :unauthorized) # HTTP 401
+    return if authenticated?
+    if File.exists?("public/401.html")
+      render(:file => "public/401.html", :status => :unauthorized)
+    else
+      render(:plain => "Unauthorized!", :status => :unauthorized)
+    end
   end
 
   ##
@@ -24,7 +32,7 @@ class ApplicationController < ActionController::Base
   # @return [String] The CAS login URL.
 
   def login_url(service_url=request.url)
-    url = URI(Rails.application.config.rack_cas.server_url)
+    url = URI(Rails.application.cas_server_url)
     url.path = "/login"
     url.query = "service=#{service_url || request.url}"
     url.to_s

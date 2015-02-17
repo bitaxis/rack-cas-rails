@@ -1,6 +1,7 @@
 *.gem
 *.log
 *.rbc
+*.sqlite3
 /.config
 /coverage/
 /InstalledFiles

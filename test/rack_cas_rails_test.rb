@@ -19,10 +19,6 @@ class RackCASRailsTest < ActiveSupport::TestCase
     end
   end
 
-  test "authenticated controller defined" do
-    assert defined?(RackCASRails::AuthenticatedController)
-  end
-
   test "helpers defined" do
       APP_CONTROLLER_METHODS.each do |method|
       assert ApplicationController._helper_methods.include?(method.to_sym)

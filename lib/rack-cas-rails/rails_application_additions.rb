@@ -1,5 +1,5 @@
 ##
-# Augments the Rails application class.
+# Augments the Rails::Application class.
 
 class Rails::Application < Rails::Engine
 

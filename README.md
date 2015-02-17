@@ -65,7 +65,7 @@ he can do nothing.  To do so, add the following ```before_action``` callback to 
 ```ruby
 # app/controllers/application_ronctoller.rb
 
-require "rack_cas_rails"
+require "rack-cas-rails"
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -101,7 +101,7 @@ In this case, only certain portions of your application requires authentication.
 ```ruby
 # app/controllers/application_ronctoller.rb
 
-require "rack_cas_rails"
+require "rack-cas-rails"
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -200,7 +200,7 @@ Now, let's add a helper named ```current_user``` (or any other name you like) to
 ```ruby
 # app/controllers/application_ronctoller.rb
 
-require "rack_cas_rails"
+require "rack-cas-rails"
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

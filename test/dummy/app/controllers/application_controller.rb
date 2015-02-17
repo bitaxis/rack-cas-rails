@@ -1,4 +1,4 @@
-require "rack_cas_rails"
+require "rack-cas-rails"
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.

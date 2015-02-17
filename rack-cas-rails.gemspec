@@ -1,6 +1,6 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-require "rack_cas_rails/version"
+require "rack-cas-rails/version"
 
 Gem::Specification.new do |spec|
 

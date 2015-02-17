@@ -1,6 +1,6 @@
 $:.push File.expand_path("../lib", __FILE__)
 
-require "rack-cas-rails/version"
+require "rack_cas_rails/version"
 
 Gem::Specification.new do |spec|
 
@@ -21,5 +21,9 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "rack-cas", "~> 0.9.2"
   spec.add_runtime_dependency "rails",    "~> 4.2", ">= 4.2.0"
+
+  spec.add_development_dependency "byebug"
+  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "yard"
 
 end

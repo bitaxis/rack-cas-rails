@@ -1,11 +1,14 @@
 *.gem
+*.log
 *.rbc
+*.sqlite3
 /.config
 /coverage/
 /InstalledFiles
 /pkg/
 /spec/reports/
 /test/tmp/
+/test/dummy/tmp/
 /test/version_tmp/
 /tmp/
 

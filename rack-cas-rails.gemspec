@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rails",    "~> 4.2", ">= 4.2.0"
 
   spec.add_development_dependency "byebug"
+  spec.add_development_dependency "dotenv-rails"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "yard"
 

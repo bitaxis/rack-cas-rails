@@ -1,7 +1,7 @@
 ##
 # Augments the Rails::Application class.
 
-class Rails::Application < Rails::Engine
+Rails::Application.class_eval do
 
   ##
   # Gives the Rails::Application class a read-only class attribute to point to the CAS server URL.  The URL in turn is then

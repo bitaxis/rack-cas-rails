@@ -29,8 +29,10 @@ module Dummy
     ##
     # Set the root URL of the CAS server (e.g. CASinoApp) in such a way that the entire application
     # (including the login_url method/helper) can get access to it via Rails.application.cas_server_url
+    # The CAS_SERVER_URL environment variable, in turn, is contained within the .env file that is kept
+    # out of Git for privacy reasons (https://github.com/bkeepers/dotenv).
 
-    @cas_server_url = "https://cumulus.local:3334/"
+    @cas_server_url = ENV["CAS_SERVER_URL"]
 
     ##
     # Configure rack-cas to know about the CAS server root URL so that it knows where to

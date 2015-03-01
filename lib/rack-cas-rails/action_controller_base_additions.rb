@@ -41,7 +41,7 @@ module RackCASRails
 
     def logout_url(service_url=request.url)
       url = URI(request.url)
-      url.path = "/logout"
+      url.path = "#{root_path}logout"
       url.query = "service=#{service_url || request.url}"
       url.to_s
     end

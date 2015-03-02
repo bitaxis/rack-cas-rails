@@ -1,4 +1,3 @@
-##
 # Augments the Rails::Application class.
 
 Rails::Application.class_eval do

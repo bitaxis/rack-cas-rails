@@ -2,9 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-##
 # Need to require this so we can configure it in the Application class.
-
 require "rack-cas"
 
 Bundler.require(*Rails.groups)
@@ -26,7 +24,6 @@ module Dummy
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    ##
     # Set the root URL of the CAS server (e.g. CASinoApp) in such a way that the entire application
     # (including the login_url method/helper) can get access to it via Rails.application.cas_server_url
     # The CAS_SERVER_URL environment variable, in turn, is contained within the .env file that is kept
@@ -34,7 +31,6 @@ module Dummy
 
     @cas_server_url = ENV["CAS_SERVER_URL"]
 
-    ##
     # Configure rack-cas to know about the CAS server root URL so that it knows where to
     # re-direct browser to for authentication
 

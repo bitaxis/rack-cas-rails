@@ -38,10 +38,19 @@ module RackCASRails
     # which is actually undocumented.  I had to find out by looking into the source code of the rack-cas gem.
     # @param service_url [String] Optional url to redirect to after authentication.
     # @return [String] The CAS logout URL.
+    # @note
+    #   This helper depends on your application having a root route, so that the *root_url* helper is defined.  Otherwise,
+    #   it degrades to current request URL's scheme + host + port + "/logout", which may not be what you want, especially in
+    #   sub-URI hosting situations.
 
     def logout_url(service_url=request.url)
-      url = URI(request.url)
-      url.path = "#{root_path}logout"
+      if self.respond_to?(:root_url)
+        url = URI(root_url)
+        url.path += "logout"
+      else
+        url = URI(request.url)
+        url.path = "/logout"
+      end
       url.query = "service=#{service_url || request.url}"
       url.to_s
     end

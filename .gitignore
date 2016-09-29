@@ -37,4 +37,4 @@ build/
 .rvmrc
 
 # Ignore .env files (see https://github.com/bkeepers/dotenv)
-.env
+.env*

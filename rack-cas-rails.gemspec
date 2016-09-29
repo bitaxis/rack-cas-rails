@@ -19,11 +19,13 @@ Gem::Specification.new do |spec|
   spec.homepage    = "https://github.com/bitaxis/rack-cas-rails.git"
   spec.license     = "MIT"
 
-  spec.add_runtime_dependency "rack-cas", "~> 0.9.2"
-  spec.add_runtime_dependency "rails",    "~> 4.2", ">= 4.2.0"
+  spec.add_runtime_dependency "byebug"
+  spec.add_runtime_dependency "rack-cas", "~> 0.15"
+  spec.add_runtime_dependency "rails",    "~> 5.0", ">= 5.0.0"
 
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "dotenv-rails"
+  spec.add_development_dependency "rails-controller-testing"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "yard"
 

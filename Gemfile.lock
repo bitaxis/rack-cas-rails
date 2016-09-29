@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    rack-cas-rails (1.0.2)
+    rack-cas-rails (2.0.0)
       byebug
       rack-cas (~> 0.15)
-      rails
+      rails (~> 5.0, >= 5.0.0)
 
 GEM
   remote: https://rubygems.org/

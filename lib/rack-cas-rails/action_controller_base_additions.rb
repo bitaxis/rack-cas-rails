@@ -1,3 +1,5 @@
+require "byebug"
+
 module RackCASRails
   module ActionControllerBaseAdditions
 
@@ -6,7 +8,7 @@ module RackCASRails
 
     def authenticate!
       return if authenticated?
-      if File.exists?("public/401.html")
+      if File.exist?("public/401.html")
         render(:file => "public/401.html", :status => :unauthorized)
       else
         render(:plain => "Unauthorized!", :status => :unauthorized)

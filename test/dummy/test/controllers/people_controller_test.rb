@@ -33,7 +33,7 @@ class PeopleControllerTest < ActionController::TestCase
   # end
 
   test "should get success for show" do
-    get :show, id: @person
+    get :show, params: { id: @person.id }
     assert_response :success
   end
 

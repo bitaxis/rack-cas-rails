@@ -1,6 +1,11 @@
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
+# https://github.com/rails/rails-controller-testing
+# Even with the rails-controller-testing gem installed, we need these two lines to enable it
+require 'rails-controller-testing'
+Rails::Controller::Testing.install
+
 # Need to use .env to shim in the CAS server URL so that I don't have to hard-code it into the source code and expose my
 # private URL.  This means I need to have a .env file at the root directory of the gem.  I got this from
 # https://github.com/bkeepers/dotenv#sinatra-or-plain-ol-ruby
